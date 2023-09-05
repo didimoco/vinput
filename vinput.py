@@ -1,4 +1,4 @@
-def input_diferenciado(typeout:type,textinput:str,verify:list = False,uppercase:bool = False,stripinput:bool = False,faillmss:str = ''):
+def vinput(typeout:type,textinput:str,verify:list = False,uppercase:bool = False,stripinput:bool = False,faillmss:str = ''):
     
     while True:
 
@@ -24,9 +24,12 @@ def input_diferenciado(typeout:type,textinput:str,verify:list = False,uppercase:
         return x
 
 
+# exemple of getting an int variable defined
+
 
 if __name__ == "__main__":
     
+    #faillmss is optional for the loop
 
-    print(input_diferenciado(str,'digite A ou B: ',['A','B'],True,True,'digite um dos valores validos'))
+    number = vinput(typeout = int , textinput = 'enter an int number between 0 and 10: ',verify = range(0,11),faillmss = 'enter a valid number !')
 
