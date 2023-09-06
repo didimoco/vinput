@@ -4,7 +4,7 @@ def vinput(typeout:type,textinput:str,verify:list = False,uppercase:bool = False
 
         try:
 
-            x = input(textinput)
+            x = typeout(input(textinput))
 
             if uppercase: x = x.upper()
 
