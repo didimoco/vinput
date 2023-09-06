@@ -24,10 +24,11 @@ def vinput(typeout:type,textinput:str,verify:list = False,uppercase:bool = False
         return x
 
 
-# exemple of getting an int variable defined
-
 
 if __name__ == "__main__":
+
+# exemple of getting an int variable defined
+    
     
     #faillmss is optional for the loop
 
