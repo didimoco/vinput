@@ -1,29 +1,42 @@
-def vinput(typeout:type,textinput:str,verify:list = False,uppercase:bool = False,stripinput:bool = False,faillmss:str = ''):
+def vinput(typeout:type,textinput:str,verify:list = False,uppercase:bool = False,stripinput:bool = False,faillmss:str = '',minlen:int = 0,maxlen:int = -1,
+           minnum:float = False , maxnum:float = False):
     
     while True:
 
         try:
 
-            x = typeout(input(textinput))
+            x = input(textinput)
+
+
+            if len(x) < minlen:
+                continue
+
+            if maxlen != -1 and len(x) > maxlen:
+                continue
 
             if uppercase: x = x.upper()
 
             if stripinput: x = x.strip()
+             
+            x = typeout(x)
 
+            if minnum and x < minnum:
+                continue
+
+            if maxnum and x > maxnum:
+                continue
+            
             if verify:
 
                 if x not in verify:
                     if faillmss != '' :print(faillmss)
-                    continue
-
+                    continue 
 
         except ValueError:
-            if mss_error != '':print(faillmss)
+            if faillmss != '':print(faillmss)
             continue
 
         return x
-
-
 
 if __name__ == "__main__":
 
