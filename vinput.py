@@ -1,5 +1,11 @@
-def vinput(typeout:type,textinput:str,verify:list = False,uppercase:bool = False,stripinput:bool = False,faillmss:str = '',minlen:int = 0,maxlen:int = -1,
-           minnum:float = False , maxnum:float = False):
+def vinput(typeout:type , textinput:str , verify:list = False , uplow:int = 0, stripinput:bool = False , faillmss:str = '',
+           minlen:int = 0 , maxlen:int = -1 , minnum:float = False , maxnum:float = False):
+
+    #uplow = 0 -> nothing
+    #uplow = 1 -> upper input
+    #uplow = 2 -> lower input
+
+
     
     while True:
 
@@ -14,7 +20,11 @@ def vinput(typeout:type,textinput:str,verify:list = False,uppercase:bool = False
             if maxlen != -1 and len(x) > maxlen:
                 continue
 
-            if uppercase: x = x.upper()
+            match uplow:
+
+                case 1: x = x.upper()
+
+                case 2: x = x.lower()
 
             if stripinput: x = x.strip()
              
