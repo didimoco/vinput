@@ -55,5 +55,5 @@ if __name__ == "__main__":
     
     #faillmss is optional for the loop
 
-    number = vinput(typeout = int , textinput = 'enter an int number between 0 and 10: ',verify = range(0,11),faillmss = 'enter a valid number !')
+    number = vinput(typeout = int , textinput = 'enter an int number between 0 and 10 : ',verify = range(0,11),faillmss = 'enter a valid number !')
 
