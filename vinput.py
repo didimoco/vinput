@@ -1,12 +1,9 @@
-def vinput(typeout:type , textinput:str , verify:list = False , uplow:int = 0, stripinput:bool = False , faillmss:str = '',
-           minlen:int = 0 , maxlen:int = -1 , minnum:float = False , maxnum:float = False):
-
-    #uplow = 0 -> nothing
-    #uplow = 1 -> upper input
-    #uplow = 2 -> lower input
+def vinput(typeout:type , textinput:str , verify:list = False , uplow:int = 0, stripinput:bool = False , failmss:str = None,
+           minlen:int = 0 , maxlen:int = None , minnum:float = None , maxnum:float = None):
 
 
-    
+    fail = lambda mss:print(mss) if mss != None else None
+
     while True:
 
         try:
@@ -15,9 +12,11 @@ def vinput(typeout:type , textinput:str , verify:list = False , uplow:int = 0, s
 
 
             if len(x) < minlen:
+                fail(failmss)
                 continue
 
-            if maxlen != -1 and len(x) > maxlen:
+            if maxlen != -1 and maxlen != None and len(x) > maxlen:
+                faill(failmss)
                 continue
 
             match uplow:
@@ -30,20 +29,22 @@ def vinput(typeout:type , textinput:str , verify:list = False , uplow:int = 0, s
              
             x = typeout(x)
 
-            if minnum and x < minnum:
+            if minnum != None and x < minnum:
+                fail(failmss)
                 continue
 
-            if maxnum and x > maxnum:
+            if maxnum != None and x > maxnum:
+                fail(failmss)
                 continue
             
             if verify:
 
                 if x not in verify:
-                    if faillmss != '' :print(faillmss)
+                    fail(failmss)
                     continue 
 
         except ValueError:
-            if faillmss != '':print(faillmss)
+            fail(failmss)
             continue
 
         return x
@@ -51,9 +52,6 @@ def vinput(typeout:type , textinput:str , verify:list = False , uplow:int = 0, s
 if __name__ == "__main__":
 
 # exemple of getting an int variable defined
-    
-    
-    #faillmss is optional for the loop
 
-    number = vinput(typeout = int , textinput = 'enter an int number between 0 and 10: ',verify = range(0,11),faillmss = 'enter a valid number !')
+    number = vinput(typeout = int , textinput = 'enter an int number between 0 and 10: ',verify = range(0,11),failmss = 'enter a valid number !')
 
