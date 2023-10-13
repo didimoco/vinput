@@ -8,6 +8,7 @@ def vinput(typeout:type , textinput:str , verify:list = False , uplow:int = 0, s
 
         try:
 
+
             x = input(textinput)
 
 
